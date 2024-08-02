@@ -13,6 +13,7 @@ import {
 } from '../../../../shared/constants/metametrics';
 import { MetaMetricsContext } from '../../../contexts/metametrics';
 import NftsTab from '../../app/assets/nfts/nfts-tab';
+import DidsTab from '../../app/assets/nfts/dids-tab';
 import AssetList from '../../app/assets/asset-list';
 import TransactionList from '../../app/transaction-list';
 import { Tabs, Tab } from '../../ui/tabs';
@@ -169,6 +170,26 @@ export const AccountOverviewTabs = ({
             {...tabProps}
           >
             <NftsTab />
+            {
+              ///: BEGIN:ONLY_INCLUDE_IF(build-main)
+              <NeedHelpButtonLink
+                justifyContent={JustifyContent.flexStart}
+                paddingLeft={4}
+                marginBottom={4}
+              ></NeedHelpButtonLink>
+              ///: END:ONLY_INCLUDE_IF
+            }
+          </Tab>
+        )}
+
+        {showNfts && (
+          <Tab
+            name={t('dids')}
+            tabKey="dids"
+            data-testid="account-overview__nfts-tab"
+            {...tabProps}
+          >
+            <DidsTab />
             {
               ///: BEGIN:ONLY_INCLUDE_IF(build-main)
               <NeedHelpButtonLink
